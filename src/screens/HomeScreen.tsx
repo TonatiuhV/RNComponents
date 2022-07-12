@@ -1,22 +1,11 @@
 import React from 'react';
-import {FlatList, Text, View} from 'react-native';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
-
+import {FlatList, View} from 'react-native';
 import {FlatListMenuItem} from '../components/FlatListMenuItem';
+import {HeaderTitle} from '../components/HeaderTitle';
 import {menuItems} from '../data/menuItems';
 import {appStyles} from '../theme/appTheme';
 
 export const HomeScreen = () => {
-  const {top} = useSafeAreaInsets();
-
-  const renderListHeader = () => {
-    return (
-      <View style={{marginTop: top + 20, marginBottom: 20}}>
-        <Text style={appStyles.title}>Opciones de Menú</Text>
-      </View>
-    );
-  };
-
   const itemSeparator = () => {
     return (
       <View
@@ -33,7 +22,7 @@ export const HomeScreen = () => {
         // Simpre poner el key estractor retornando algo unico de tipo string
         keyExtractor={item => item.name}
         // Encezado de la flatlist
-        ListHeaderComponent={() => renderListHeader()}
+        ListHeaderComponent={() => <HeaderTitle title="Opciones de menú" />}
         // Recuerda podemos asumir arrow function suponiendo el argumento
         ItemSeparatorComponent={itemSeparator}
       />
