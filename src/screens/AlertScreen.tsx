@@ -22,10 +22,24 @@ export const AlertScreen = () => {
       },
     );
   };
+
+  const showPrompt = () => {
+    Alert.prompt(
+      '¿Está seguro?',
+      'Esta acción no se puede revertir',
+      (valor: string) => console.log('Info: ' + valor),
+      'secure-text', // Tipo de testo tambien esta los input login (user,password)
+      '', // Default Value
+      'numeric', //
+    );
+  };
+
   return (
     <View style={appStyles.globalMargin}>
       <HeaderTitle title="Alerts" />
       <Button title="Mostrar Alerta" onPress={showAlert} />
+      {/* Solo funciona n IOS */}
+      <Button title="Mostrar Prompt" onPress={showPrompt} />
     </View>
   );
 };
