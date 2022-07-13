@@ -8,4 +8,13 @@ export const appStyles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
   },
+  switchRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  switchText: {
+    fontSize: 25,
+  },
 });

@@ -5,26 +5,23 @@ import {
   Platform,
   ScrollView,
   StyleSheet,
+  Text,
   TextInput,
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
+import {CustomeSwitch} from '../components/CustomeSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {useForm} from '../hooks/useForm';
 import {appStyles} from '../theme/appTheme';
 
 export const TextInputsScreen = () => {
-  const [form, setForm] = useState({
+  const {form, onChange} = useForm({
     name: '',
     email: '',
     phone: '',
+    isSubscribed: false,
   });
-
-  const onChange = (value: string, field: string) => {
-    setForm({
-      ...form,
-      [field]: value,
-    });
-  };
 
   return (
     <KeyboardAvoidingView
@@ -51,7 +48,14 @@ export const TextInputsScreen = () => {
               keyboardType="email-address"
               keyboardAppearance="dark" // Solo funciona en IOS
             />
-
+            {/* Cusome switch */}
+            <View style={appStyles.switchRow}>
+              <Text style={appStyles.switchText}>Subscribirse</Text>
+              <CustomeSwitch
+                onChange={isEnabled => onChange(isEnabled, 'isSubscribed')}
+                isOn={form.isSubscribed}
+              />
+            </View>
             <HeaderTitle title={JSON.stringify(form, null, 2)} />
             <TextInput
               style={style.textInputStyle}
