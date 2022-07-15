@@ -2,17 +2,11 @@ import React from 'react';
 import {FlatList, View} from 'react-native';
 import {FlatListMenuItem} from '../components/FlatListMenuItem';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ItemSeparator} from '../components/ItemSeparator';
 import {menuItems} from '../data/menuItems';
 import {appStyles} from '../theme/appTheme';
 
 export const HomeScreen = () => {
-  const itemSeparator = () => {
-    return (
-      <View
-        style={{borderBottomWidth: 1, opacity: 0.4, marginVertical: 8}}></View>
-    );
-  };
-
   return (
     <View style={{flex: 1, ...appStyles.globalMargin}}>
       <FlatList
@@ -24,7 +18,7 @@ export const HomeScreen = () => {
         // Encezado de la flatlist
         ListHeaderComponent={() => <HeaderTitle title="Opciones de menú" />}
         // Recuerda podemos asumir arrow function suponiendo el argumento
-        ItemSeparatorComponent={itemSeparator}
+        ItemSeparatorComponent={ItemSeparator}
       />
     </View>
   );
