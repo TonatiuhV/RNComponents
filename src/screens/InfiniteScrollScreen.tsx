@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from 'react-native';
+import {FadeInImage} from '../components/FadeInImage';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {appStyles} from '../theme/appTheme';
 
@@ -26,20 +27,21 @@ export const InfiniteScrollScreen = () => {
 
   const renderItem = (item: number) => {
     return (
-      <Image
-        source={{
-          uri: `https://picsum.photos/id/${item}/500/400.jpg`,
-        }}
-        style={{
-          width: '100%',
-          height: 400,
-        }}
-      />
+      // <Image
+      //   source={{
+      //     uri: `https://picsum.photos/id/${item}/500/400.jpg`,
+      //   }}
+      //   style={{
+      //     width: '100%',
+      //     height: 400,
+      //   }}
+      // />
+      <FadeInImage uri={`https://picsum.photos/id/${item}/500/400.jpg`} />
     );
   };
 
   return (
-    <View style={{flex: 1, backgroundColor: 'red'}}>
+    <View style={{flex: 1}}>
       <FlatList
         data={numbers}
         keyExtractor={item => item.toString()}
