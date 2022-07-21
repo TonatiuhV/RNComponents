@@ -8,19 +8,24 @@ import {
   Theme,
 } from '@react-navigation/native';
 import Navigator from './src/navigator/Navigator';
+import {ThemeProvider} from './src/context/theme/ThemeContext';
 
-const CustomeTheme: Theme = {
-  dark: true,
-  colors: {
-    ...DefaultTheme.colors,
-  },
+// const CustomeTheme: Theme = {
+//   dark: true,
+//   colors: {
+//     ...DefaultTheme.colors,
+//   },
+// };
+
+const AppState = ({children}: any) => {
+  return <ThemeProvider>{children}</ThemeProvider>;
 };
 
 const App = () => {
   return (
-    <NavigationContainer theme={CustomeTheme}>
+    <AppState>
       <Navigator />
-    </NavigationContainer>
+    </AppState>
   );
 };
 
