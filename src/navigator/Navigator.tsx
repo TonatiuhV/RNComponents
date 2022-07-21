@@ -12,6 +12,7 @@ import {CustomeSectionListScreen} from '../screens/CustomeSectionListScreen';
 import {ModalScreen} from '../screens/ModalScreen';
 import {InfiniteScrollScreen} from '../screens/InfiniteScrollScreen';
 import SlidesScreen from '../screens/SlidesScreen';
+import {ChangeThemeScreen} from '../screens/ChangeThemeScreen';
 
 const Stack = createStackNavigator();
 
@@ -20,9 +21,9 @@ const Navigator = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {
-          backgroundColor: 'white',
-        },
+        // cardStyle: {
+        //   backgroundColor: 'white',
+        // },
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="Animation101Screen" component={Animation101Screen} />
@@ -44,6 +45,7 @@ const Navigator = () => {
         component={InfiniteScrollScreen}
       />
       <Stack.Screen name="SlidesScreen" component={SlidesScreen} />
+      <Stack.Screen name="ChangeThemeScreen" component={ChangeThemeScreen} />
     </Stack.Navigator>
   );
 };
