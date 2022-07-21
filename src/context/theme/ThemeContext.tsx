@@ -11,7 +11,6 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}: any) => {
-  console.log(lightTheme);
   const [theme, dispatch] = useReducer(themeReducer, lightTheme); // TODO: el
 
   const setDarkTheme = () => {
