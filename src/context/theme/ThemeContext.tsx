@@ -12,7 +12,9 @@ interface ThemeContextProps {
 export const ThemeContext = createContext({} as ThemeContextProps);
 
 export const ThemeProvider = ({children}: any) => {
+  // const colorScheme = useColorScheme();
   const colorScheme = Appearance.getColorScheme();
+
   const initalTheme = colorScheme === 'light' ? lightTheme : darkTheme;
   const [theme, dispatch] = useReducer(themeReducer, initalTheme); // TODO: el
 
@@ -26,12 +28,22 @@ export const ThemeProvider = ({children}: any) => {
 
   useEffect(() => {
     const listener = Appearance.addChangeListener(listener => {
-      listener.colorScheme;
+      listener.colorScheme === 'dark' ? setDarkTheme() : setLightTheme();
     });
 
     return () => {
-      // listener.remove();
+      listener.remove();
     };
+    // METHODO DEL  CURSO
+    // AppState.addEventListener('change', status => {
+    //   if (status === 'active') {
+    //     if (Appearance.getColorScheme() === 'dark') {
+    //       setDarkTheme();
+    //     } else {
+    //       setLightTheme();
+    //     }
+    //   }
+    // });
   }, []);
 
   return (
