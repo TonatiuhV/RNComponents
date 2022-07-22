@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -12,10 +12,15 @@ import {
 } from 'react-native';
 import {CustomeSwitch} from '../components/CustomeSwitch';
 import {HeaderTitle} from '../components/HeaderTitle';
+import {ThemeContext} from '../context/theme/ThemeContext';
 import {useForm} from '../hooks/useForm';
 import {appStyles} from '../theme/appTheme';
 
 export const TextInputsScreen = () => {
+  const {
+    theme: {colors},
+  } = useContext(ThemeContext);
+
   const {form, onChange} = useForm({
     name: '',
     email: '',
@@ -33,15 +38,23 @@ export const TextInputsScreen = () => {
           <View style={appStyles.globalMargin}>
             <HeaderTitle title="TextInputs" />
             <TextInput
-              style={style.textInputStyle}
+              style={[
+                style.textInputStyle,
+                {color: colors.text, borderColor: colors.text},
+              ]}
               placeholder="Ingrese su nombre"
+              placeholderTextColor={colors.text}
               autoCorrect={false}
               autoCapitalize="words"
               onChangeText={value => onChange(value, 'name')}
             />
             <TextInput
-              style={style.textInputStyle}
+              style={[
+                style.textInputStyle,
+                {color: colors.text, borderColor: colors.text},
+              ]}
               placeholder="Ingrese su email"
+              placeholderTextColor={colors.text}
               autoCorrect={false}
               autoCapitalize="none"
               onChangeText={value => onChange(value, 'email')}
@@ -50,7 +63,9 @@ export const TextInputsScreen = () => {
             />
             {/* Cusome switch */}
             <View style={appStyles.switchRow}>
-              <Text style={appStyles.switchText}>Subscribirse</Text>
+              <Text style={[appStyles.switchText, {color: colors.text}]}>
+                Subscribirse
+              </Text>
               <CustomeSwitch
                 onChange={isEnabled => onChange(isEnabled, 'isSubscribed')}
                 isOn={form.isSubscribed}
@@ -58,8 +73,12 @@ export const TextInputsScreen = () => {
             </View>
             <HeaderTitle title={JSON.stringify(form, null, 2)} />
             <TextInput
-              style={style.textInputStyle}
+              style={[
+                style.textInputStyle,
+                {color: colors.text, borderColor: colors.text},
+              ]}
               placeholder="Ingrese su teléfono"
+              placeholderTextColor={colors.text}
               onChangeText={value => onChange(value, 'phone')}
               keyboardType="phone-pad"
             />
